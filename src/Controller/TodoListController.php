@@ -9,11 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class TodoListController extends AbstractController
 {
     #[Route('/todo/list', name: 'app_todo_list')]
-    public function index(): JsonResponse
+    public function index()
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/TodoListController.php',
-        ]);
+        $data = [
+            'header' => 'Todo List',
+            'description' => 'This is symfony todo list app',
+        ];
+
+        return $this->render('index.html.twig', $data);
     }
+
 }
