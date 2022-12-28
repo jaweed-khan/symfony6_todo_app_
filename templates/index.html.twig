@@ -17,36 +17,22 @@
 <div class="header">
       <h2>My To Do List</h2>
       <form method="POST" action="{{path('app_todo_create')}}">
-        <input type="text" id="myInput" placeholder="Task title..." />
+        <input type="text" name="title" id="myInput" placeholder="Task title..." />
         <button type="submit" class="addBtn">Add a task</button>
       </form>
     </div>
 
     <ul>
-      <li>
-        <a href="{{ path('app_todo_switch_status', {'id': 1}) }}"> <span class="task-list-item">Do shopping </span> </a
-        ><a onclick="return confirm('Are you sure to delete?')" href="{{ path('app_todo_delete', {'id':1}) }}"><span class="close">X</span></a>
+      <!-- get tasks from database -->
+      {% for task in tasks %}
+      
+      <li class="{% if task.status %}checked{% endif %}">
+      <a href="{{ path('app_todo_switch_status', {'id': task.id}) }}"> <span class="task-list-item">{{ task.title }} </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="{{ path('app_todo_delete', {'id':task.id}) }}"><span class="close">X</span></a>
       </li>
-      <li class="checked">
-        <a href="undone"> <span class="task-list-item">Buy eggs </span> </a
-        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
-      </li>
-      <li>
-        <a href="done"> <span class="task-list-item">Meet John </span> </a
-        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
-      </li>
-      <li>
-        <a href="done"> <span class="task-list-item">Read a book </span> </a
-        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
-      </li>
-      <li>
-        <a href="done"> <span class="task-list-item">Learn Doctrine ORM </span> </a
-        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
-      </li>
-      <li>
-        <a href="done"> <span class="task-list-item">Prepare a meal </span> </a
-        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
-      </li>
+
+      {% endfor %}
+
     </ul>
 
 
