@@ -4,12 +4,50 @@
     Todo App
 {% endblock %}
 
+{% block stylesheets %}
+{{ encore_entry_link_tags('app') }}
+
+<!-- add the css file from public folder -->
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
+
+{% endblock %}
+
 {% block body %}
 
-<!-- get the data from the controller $data['header'] -->
-    <h1>{{ header }}</h1>
+<div class="header">
+      <h2>My To Do List</h2>
+      <form action="">
+        <input type="text" id="myInput" placeholder="Task title..." />
+        <button type="submit" class="addBtn">Add a task</button>
+      </form>
+    </div>
 
-    <p>{{ description }}</p>
+    <ul>
+      <li>
+        <a href="done"> <span class="task-list-item">Do shopping </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li>
+      <li class="checked">
+        <a href="undone"> <span class="task-list-item">Buy eggs </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li>
+      <li>
+        <a href="done"> <span class="task-list-item">Meet John </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li>
+      <li>
+        <a href="done"> <span class="task-list-item">Read a book </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li>
+      <li>
+        <a href="done"> <span class="task-list-item">Learn Doctrine ORM </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li>
+      <li>
+        <a href="done"> <span class="task-list-item">Prepare a meal </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li>
+    </ul>
 
 
 {% endblock %}
