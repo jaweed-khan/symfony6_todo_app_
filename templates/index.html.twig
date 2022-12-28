@@ -16,7 +16,7 @@
 
 <div class="header">
       <h2>My To Do List</h2>
-      <form action="">
+      <form method="POST" action="{{path('app_todo_create')}}">
         <input type="text" id="myInput" placeholder="Task title..." />
         <button type="submit" class="addBtn">Add a task</button>
       </form>
@@ -24,8 +24,8 @@
 
     <ul>
       <li>
-        <a href="done"> <span class="task-list-item">Do shopping </span> </a
-        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+        <a href="{{ path('app_todo_switch_status', {'id': 1}) }}"> <span class="task-list-item">Do shopping </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="{{ path('app_todo_delete', {'id':1}) }}"><span class="close">X</span></a>
       </li>
       <li class="checked">
         <a href="undone"> <span class="task-list-item">Buy eggs </span> </a
