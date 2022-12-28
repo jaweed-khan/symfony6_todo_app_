@@ -33,7 +33,7 @@ class TodoListController extends AbstractController
     #[Route('/todo/create', name: 'app_todo_create', methods: ['POST'])]
     public function create(ManagerRegistry $doctrine, Request $request)
     {
-        $title = $request->request->get('title'); 
+        $title = trim($request->request->get('title')); 
 
         if(!$title)
             return $this->redirectToRoute('app_todo_list');
